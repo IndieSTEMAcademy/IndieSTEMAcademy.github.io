@@ -1,116 +1,122 @@
-# The Tactile theme
+# Setting Up Github Pages site with Jekyll Tutorial
 
-[![.github/workflows/ci.yaml](https://github.com/pages-themes/tactile/actions/workflows/ci.yaml/badge.svg)](https://github.com/pages-themes/tactile/actions/workflows/ci.yaml) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-tactile.svg)](https://badge.fury.io/rb/jekyll-theme-tactile)
+Jekyll is a static site generator. With Jekyll, you can write your pages in markdown from which it will build your html pages based on the layout settings. For example, if the markdown file you're writing is `project1.markdown`, Jekyll will build the `project1.html` file for you. There's no need to tweak the html, css, or whatever it is for the layout unless you want to do some customization. The Jekyll theme you're using alone already allowed some customization (think of working with Bootstrap) and you can easily change them using the provided field. 
 
-*Tactile is a Jekyll theme for GitHub Pages. You can [preview the theme to see what it looks like](http://pages-themes.github.io/tactile), or even [use it today](#usage).*
+## Live Version
 
-![Thumbnail of Tactile](thumbnail.png)
+Check the live version of my portfolio [https://azukacchi.github.io/](https://azukacchi.github.io/)
 
-## Usage
+## Assumptions
 
-To use the Tactile theme:
+1. You are already familiar with git
+2. You have the project documentation ready in markdown
 
-1. Add the following to your site's `_config.yml`:
+## Tutorial Links
 
-    ```yml
-    remote_theme: pages-themes/tactile@v0.2.0
-    plugins:
-    - jekyll-remote-theme # add this line to the plugins list if you already have one
+- [setting up jekyll (Windows)](https://jekyllrb.com/docs/installation/windows/)
+- [free jekyll themes](https://jekyllthemes.io/free)
+- [github pages official documentation](https://docs.github.com/en/github/working-with-github-pages/creating-a-github-pages-site)
+- ["just-the-docs" theme source code](https://github.com/pmarsceill/just-the-docs)
+- ["just-the-docs" theme documentation](https://pmarsceill.github.io/just-the-docs/)
+- ["just-the-docs" github pages DEMO](https://github.com/pmarsceill/jtd-remote)
+
+Other reading
+- [simplest tutorial](https://towardsdatascience.com/9-minutes-to-a-data-science-portfolio-website-80b79ced6c54), but you can't run your site locally
+
+## Steps
+
+### Install Ruby and Jekyll
+
+Follow the instruction from this page [for Windows](https://jekyllrb.com/docs/installation/windows/).
+
+### Prepare Your Project Folder
+
+We will prepare and test out pages *locally* first. These first steps are modified from [this](https://docs.github.com/en/github/working-with-github-pages/creating-a-github-pages-site-with-jekyll).
+
+1. Make the new project folder. Choose any names, e.g. `myblog`, because this won't be the name for your repository, as your default github page is `username.github.io`.
+2. Open command prompt and navigate to project folder.
+3. Choose the directory where you are going to publish your site.
+    - If you choose to publish your site from the root of the repository, `/`, your github pages will appear directly on the root, e.g. `username.github.io`. If you choose this, you don't need to make any new directory
+    - If you choose to publish your site from a specific folder of the repository, e.g. `/docs`, your github pages will appear on that page, e.g. `username.github.io/docs`. If you choose this, make a new directory, then navigate to that folder.
+        ```
+        $ mkdir docs
+        # Creates a new folder called docs
+        $ cd docs
+        ```
+
+4.  Create a new Jekyll site in the current directory
+    ```
+    jekyll new
+    ```
+5. Install your theme, e.g. "Just-the-Docs" theme. The default theme for new Jekyll site is "minima".
+    ```
+    gem install just-the-docs
     ```
 
-2. Optionally, if you'd like to preview your site on your computer, add the following to your site's `Gemfile`:
-
-    ```ruby
-    gem "github-pages", group: :jekyll_plugins
+    ```
+    # add it to your your Jekyll site’s Gemfile
+    gem "just-the-docs"
+    ```
+6. Add Just the Docs theme to your Jekyll site’s `_config.yml`
+    ```
+    theme: "just-the-docs"
     ```
 
-## Customizing
+7. Run your local Jekyll server then open your local site on browser: http://localhost:4000
+    ```
+    bundle exec jekyll serve
+    ```
 
-### Configuration variables
+## Make Changes to Your Pages
 
-Tactile will respect the following variables, if set in your site's `_config.yml`:
+In this step, you can try adding some pages, customization, and test them locally. When you're changing the `_config.yml` file, the update will not be applied unless you restart the server and run this line again: `bundle exec jekyll serve`
 
-```yml
-title: [The title of your site]
-description: [A short description of your site's purpose]
+**Always** check the theme documentation to write your pages and setting them up! When you want to customize your theme CSS, check the theme documentation.
+
+After you've completed setting up your pages and your site is running okay locally, proceed to the next step.
+
+## Push Existing Project to Github 
+
+1. Create a new repository on Github. Type a name for your repository. If you're creating a user site, your repository **must** be named `<yourusername>.github.io`. Do not add any files because we're going to push the files from local.
+2. Unless you're already working in the root of your project folder, navigate to the root. Initialize git repository in the current directory (must be the root folder).
+    ```
+    git init
+    ```
+3. Edit the Gemfile that Jekyll created.
+    
+    - Add "#" to the beginning of the line that starts with gem "jekyll" to comment out this line.
+    - Add the github-pages gem by editing the line starting with `# gem "github-pages"`. Change this line to:
+        ```
+        gem "github-pages", "~> GITHUB-PAGES-VERSION", group: :jekyll_plugins
+        ```
+        Replace GITHUB-PAGES-VERSION with the latest supported version of the github-pages gem. Check the version here: ["Dependency versions"](https://pages.github.com/versions/).
+    - Save and close the Gemfile
+4. If you're using Jekyll theme other than the [supported themes](https://pages.github.com/themes/), edit your `_config.yml` file. For example, for "Just-the-Docs" theme, change this line: `theme: "just-the-docs` to this:
+    ```
+    remote_theme: pmarsceill/just-the-docs
+    ```
+    For another theme, check the theme documentation.
+5. From the command line, run `bundle update`
+6. Add your GitHub repository as a remote
+    ```
+    git remote add origin https://github.com/<username>/<username>.github.io.git
+    ```
+7. Then add, commit, and push your files to the remote
+    ```
+    git add .
+    git commit -m "initial commit"
+    git remote -v
+    git push origin master
+    ```
+8. Open your github pages. If there's something wrong, e.g. theme doesn't load, check your email! When there's something wrong, you will get a Page build failure or Page build waning email.
+
+## Use a Customized CSS
+
+If you're using a customized CSS (e.g. changing or adding new styles) and run them locally, you usually edit the theme by editing a scss file in the directory of the theme. For example, for "Just-the-Docs" theme, your custom.scss file is in this directory:
+```
+C:\Ruby27-x64\lib\ruby\gems\2.7.0\gems\just-the-docs-0.3.3\_sass\custom\custom.scss
 ```
 
-Additionally, you may choose to set the following optional variables:
+Check the path to the installed theme directory using this `bundle info --path "THEME-NAME"`
 
-```yml
-show_downloads: ["true" or "false" (unquoted) to indicate whether to provide a download URL]
-google_analytics: [Your Google Analytics tracking ID]
-```
-
-### Stylesheet
-
-If you'd like to add your own custom styles:
-
-1. Create a file called `/assets/css/style.scss` in your site
-2. Add the following content to the top of the file, exactly as shown:
-    ```scss
-    ---
-    ---
-
-    @import "{{ site.theme }}";
-    ```
-3. Add any custom CSS (or Sass, including imports) you'd like immediately after the `@import` line
-
-*Note: If you'd like to change the theme's Sass variables, you must set new values before the `@import` line in your stylesheet.*
-
-### Layouts
-
-If you'd like to change the theme's HTML layout:
-
-1. For some changes such as a custom `favicon`, you can add custom files in your local `_includes` folder. The files [provided with the theme](https://github.com/pages-themes/tactile/tree/master/_includes) provide a starting point and are included by the [original layout template](https://github.com/pages-themes/tactile/blob/master/_layouts/default.html).
-2. For more extensive changes, [copy the original template](https://github.com/pages-themes/tactile/blob/master/_layouts/default.html) from the theme's repository<br />(*Pro-tip: click "raw" to make copying easier*)
-3. Create a file called `/_layouts/default.html` in your site
-4. Paste the default layout content copied in the first step
-5. Customize the layout as you'd like
-
-### Customizing Google Analytics code
-
-Google has released several iterations to their Google Analytics code over the years since this theme was first created. If you would like to take advantage of the latest code, paste it into `_includes/head-custom-google-analytics.html` in your Jekyll site.
-
-### Overriding GitHub-generated URLs
-
-Templates often rely on URLs supplied by GitHub such as links to your repository or links to download your project. If you'd like to override one or more default URLs:
-
-1. Look at [the template source](https://github.com/pages-themes/tactile/blob/master/_layouts/default.html) to determine the name of the variable. It will be in the form of `{{ site.github.zip_url }}`.
-2. Specify the URL that you'd like the template to use in your site's `_config.yml`. For example, if the variable was `site.github.url`, you'd add the following:
-    ```yml
-    github:
-      zip_url: http://example.com/download.zip
-      another_url: another value
-    ```
-3. When your site is built, Jekyll will use the URL you specified, rather than the default one provided by GitHub.
-
-*Note: You must remove the `site.` prefix, and each variable name (after the `github.`) should be indent with two space below `github:`.*
-
-For more information, see [the Jekyll variables documentation](https://jekyllrb.com/docs/variables/).
-
-## Roadmap
-
-See the [open issues](https://github.com/pages-themes/tactile/issues) for a list of proposed features (and known issues).
-
-## Project philosophy
-
-The Tactile theme is intended to make it quick and easy for GitHub Pages users to create their first (or 100th) website. The theme should meet the vast majority of users' needs out of the box, erring on the side of simplicity rather than flexibility, and provide users the opportunity to opt-in to additional complexity if they have specific needs or wish to further customize their experience (such as adding custom CSS or modifying the default layout). It should also look great, but that goes without saying.
-
-## Contributing
-
-Interested in contributing to Tactile? We'd love your help. Tactile is an open source project, built one contribution at a time by users like you. See [the CONTRIBUTING file](docs/CONTRIBUTING.md) for instructions on how to contribute.
-
-### Previewing the theme locally
-
-If you'd like to preview the theme locally (for example, in the process of proposing a change):
-
-1. Clone down the theme's repository (`git clone https://github.com/pages-themes/tactile`)
-2. `cd` into the theme's directory
-3. Run `script/bootstrap` to install the necessary dependencies
-4. Run `bundle exec jekyll serve` to start the preview server
-5. Visit [`localhost:4000`](http://localhost:4000) in your browser to preview the theme
-
-### Running tests
-
-The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run `script/cibuild`. You'll need to run `script/bootstrap` once before the test script will work.
+However, when you're running your page on Github Pages, you **must** make the directory and the file yourself in the folder where you will publish your site. The exact directory is different for each theme, e.g. for "Just-the-Docs", the directory for the new file is `_sass/custom/custom.scss`. You should follow your theme documentation when you add the contents of the new file. Example with Minima theme [here](https://docs.github.com/en/github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-using-jekyll#customizing-your-themes-css).
