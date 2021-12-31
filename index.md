@@ -4,7 +4,6 @@ layout: default
 
 This is the home page of Indie STEM Academy's GitHub Pages
 
-
 More of our links:
 - https://indieacademy.co.za
 
