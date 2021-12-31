@@ -12,4 +12,4 @@ permalink: /about/indiestemacademy
 
 ## About
 
-Indie STEM Academy (ISTEMA) is run by [Shaun](https://www.linkedin.com/in/shaunschoeman/), a Bachelor of Science graduate from [UCT](https://www.uct.ac.za).
+Indie STEM Academy (ISTEMA) is run by [Shaun](https://www.linkedin.com/in/shaunschoeman/), a Bachelor of Science graduate from [UCT](https://www.uct.ac.za). We also have a [Discord Server]().
