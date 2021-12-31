@@ -1,7 +1,6 @@
 ---
-layout: page
+layout: post
 title: Posts/FuzzyLogic
-permalink: /Posts/FuzzyLogic
 ---
 
 <style>
