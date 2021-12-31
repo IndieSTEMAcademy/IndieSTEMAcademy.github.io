@@ -64,4 +64,4 @@ ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (t
 #   - vendor/gems/
 #   - vendor/ruby/
 
-theme: jekyll-theme-cayman
+theme: jekyll-theme-minimal
