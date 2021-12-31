@@ -8,13 +8,12 @@ permalink: /about/
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </style>
 
-# Hi, I'm Azka!
+# Hi! Welcome to the Indie STEM Academy Site
 
-![](../circle.png)
 
-## About Me
+## About
 
-Azka is a master's graduate with experience working in the research and development field. Her works are mainly in renewable energy issues with a specialty in bioenergy and high-value chemicals production, which mainly involve formulating research questions, literature review, data analysis, and communicating the finding to the research community. She has an interest in using data to uncover patterns behind a phenomenon, which drove her into learning Python as the most used language in Data Science. She aspires to create social impacts using her research skills as a Data Scientist.
+Indie STEM Academy (ISTEMA) is run by [Shaun](https://www.linkedin.com/in/shaunschoeman/), a Bachelor of Science graduate from [UCT](https://www.uct.ac.za).
 
 ## Certifications
 - Data Science and Machine Learning by Purwadhika Digital Technology School
